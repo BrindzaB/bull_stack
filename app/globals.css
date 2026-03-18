@@ -1,121 +1,104 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-  /* ── CSS Variables ────────────────────────────────────────────── */
-  :root {
-    --background: #eceae3;   /* surface-200 — the warm parchment base */
-    --foreground: #1f1d1a;   /* surface-900 — near-black for body text */
+/* ── CSS Variables ────────────────────────────────────────────── */
+:root {
+  --background: #f1f1f1;
+  --foreground: #161b3c;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Component layer ──────────────────────────────────────────── */
+@layer components {
+
+  .card {
+    @apply rounded-2xl bg-white shadow-card;
   }
 
-  /* Dark mode intentionally removed — single warm light theme */
-
-  body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .input-base {
+    @apply w-full rounded-lg border border-surface-200 bg-white
+           px-3 py-2 text-sm text-surface-900
+           placeholder:text-surface-400
+           focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-400
+           transition-[border-color,box-shadow] duration-150;
   }
 
-  /* ── Component layer ──────────────────────────────────────────── */
-  @layer components {
-
-    /* Card: the universal container primitive.
-       Replaces the scattered `rounded-2xl border border-gray-200 bg-white` pattern. */
-    .card {
-      @apply rounded-2xl border border-surface-300 bg-white shadow-card;
-    }
-
-    /* Input: all text/email/password fields.
-       Focus ring uses amber brand color — the single accent touch. */
-    .input-base {
-      @apply w-full rounded-lg border border-surface-300 bg-surface-50
-             px-3 py-2 text-sm text-surface-900
-             placeholder:text-surface-400
-             focus:outline-none focus:ring-2 focus:ring-brand-700/30 focus:border-brand-700
-             transition-[border-color,box-shadow] duration-150;
-    }
-
-    /* Primary action button — dark fill, subtle hover lift */
-    .btn-primary {
-      @apply inline-flex items-center justify-center
-             rounded-lg bg-surface-900 text-white text-sm font-medium
-             px-4 py-2.5
-             transition-all duration-150
-             hover:bg-surface-800 hover:shadow-card-hover hover:-translate-y-px
-             active:translate-y-0 active:shadow-none
-             disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0;
-    }
-
-    /* Ghost button — outlined, for secondary actions (e.g. Continue with Google) */
-    .btn-ghost {
-      @apply inline-flex items-center justify-center
-             rounded-lg border border-surface-300 bg-white text-surface-800 text-sm font-medium
-             px-4 py-2.5
-             transition-all duration-150
-             hover:bg-surface-50 hover:border-surface-400
-             active:scale-[0.99]
-             disabled:opacity-50 disabled:cursor-not-allowed;
-    }
-
-    /* Up/Down badges — pill chips for price change display.
-       Always monospace + tabular-nums so digits don't jump. */
-    .badge-up {
-      @apply inline-flex items-center rounded-md
-             bg-up-bg text-up
-             px-1.5 py-0.5 text-xs font-medium
-             font-mono tabular-nums;
-    }
-
-    .badge-down {
-      @apply inline-flex items-center rounded-md
-             bg-down-bg text-down
-             px-1.5 py-0.5 text-xs font-medium
-             font-mono tabular-nums;
-    }
-
-    /* Section label: small uppercase category label above stats */
-    .section-label {
-      @apply text-xs font-medium uppercase tracking-wider text-surface-500;
-    }
-
-    /* Logo mark: the BullStack brand name in the topbar */
-    .logo-mark {
-      @apply text-base font-bold tracking-tight text-surface-900 select-none;
-    }
+  .btn-primary {
+    @apply inline-flex items-center justify-center
+           rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-sm font-medium
+           px-4 py-2.5
+           transition-all duration-150
+           hover:from-indigo-400 hover:to-violet-400 hover:shadow-card-hover hover:-translate-y-px
+           active:translate-y-0 active:shadow-none
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0;
   }
 
-  /* ── Utility layer ────────────────────────────────────────────── */
-  @layer utilities {
-
-    /* .num: apply to every price, percent, stat, and axis tick.
-       Biggest single quality signal — monospace digits don't reflow. */
-    .num {
-      @apply font-mono tabular-nums;
-    }
-
-    /* Semantic directional utilities — shortcuts so component code stays readable */
-    .text-up   { color: #15803d; }
-    .text-down { color: #b91c1c; }
-    .bg-up     { background-color: #dcfce7; }  /* light tint for badge bg */
-    .bg-down   { background-color: #fee2e2; }
-
-    /* text-balance */
-    .text-balance {
-      text-wrap: balance;
-    }
-
-    /* Shimmer skeleton loader — CSS only, no JS needed.
-       Usage: <div className="shimmer rounded-lg h-6 w-32" /> */
-    .shimmer {
-      background: linear-gradient(
-        90deg,
-        #f5f3ef 25%,
-        #eceae3 50%,
-        #f5f3ef 75%
-      );
-      background-size: 200% 100%;
-      animation: shimmer 1.8s linear infinite;
-    }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center
+           rounded-lg border border-surface-200 bg-white text-surface-800 text-sm font-medium
+           px-4 py-2.5
+           transition-all duration-150
+           hover:bg-surface-50 hover:border-surface-300
+           active:scale-[0.99]
+           disabled:opacity-50 disabled:cursor-not-allowed;
   }
+
+  .badge-up {
+    @apply inline-flex items-center rounded-md
+           bg-emerald-100 text-emerald-700
+           px-1.5 py-0.5 text-xs font-medium
+           font-mono tabular-nums;
+  }
+
+  .badge-down {
+    @apply inline-flex items-center rounded-md
+           bg-rose-100 text-rose-700
+           px-1.5 py-0.5 text-xs font-medium
+           font-mono tabular-nums;
+  }
+
+  .section-label {
+    @apply text-xs font-medium uppercase tracking-wider text-surface-500;
+  }
+
+  .logo-mark {
+    @apply text-base font-bold tracking-tight select-none
+           bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent;
+  }
+}
+
+/* ── Utility layer ────────────────────────────────────────────── */
+@layer utilities {
+
+  .num {
+    @apply font-mono tabular-nums;
+  }
+
+  .text-up   { color: #059669; }
+  .text-down { color: #e11d48; }
+  .bg-up     { background-color: #d1fae5; }
+  .bg-down   { background-color: #ffe4e6; }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      #f1f3f8 25%,
+      #e4e7f2 50%,
+      #f1f3f8 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
+  }
+}

@@ -22,6 +22,8 @@ export function RegisterForm() {
 
   return (
     <div className="card w-full max-w-md p-8">
+      <p className="logo-mark text-xl mb-5">BullStack</p>
+
       <h1 className="text-display-sm text-surface-900">Create an account</h1>
       <p className="mt-1 text-sm text-surface-500">Start tracking your portfolio today</p>
 
@@ -82,7 +84,7 @@ export function RegisterForm() {
 
       <p className="mt-6 text-center text-xs text-surface-500">
         Already have an account?{" "}
-        <Link href="/login" className="font-medium text-surface-900 hover:text-surface-700 underline underline-offset-2">
+        <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 underline underline-offset-2">
           Sign in
         </Link>
       </p>

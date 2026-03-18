@@ -39,7 +39,7 @@ function WatchlistRow({ symbol, onRemove }: { symbol: string, onRemove: () => vo
                     onClick={onRemove}
                     className="rounded-md px-2 py-1 text-xs font-medium text-surface-500
                                opacity-0 transition-all
-                               hover:bg-down-bg hover:text-down
+                               hover:bg-rose-100 hover:text-rose-600
                                group-hover:opacity-100"
                 >
                     Remove
@@ -72,7 +72,7 @@ export default function WatchlistTable() {
         <div className="card overflow-hidden">
             <table className="w-full text-sm">
                 <thead>
-                    <tr className="border-b border-surface-200 bg-surface-50">
+                    <tr className="border-b border-surface-100 bg-surface-50">
                         <th className="py-3 pl-6 pr-4 text-left">
                             <span className="section-label">Symbol</span>
                         </th>

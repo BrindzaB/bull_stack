@@ -23,6 +23,8 @@ export function LoginForm() {
 
   return (
     <div className="card w-full max-w-md p-8">
+      <p className="logo-mark text-xl mb-5">BullStack</p>
+
       <h1 className="text-display-sm text-surface-900">Welcome back</h1>
       <p className="mt-1 text-sm text-surface-500">Sign in to your account</p>
 
@@ -78,7 +80,7 @@ export function LoginForm() {
 
       <p className="mt-6 text-center text-xs text-surface-500">
         Don&apos;t have an account?{" "}
-        <Link href="/register" className="font-medium text-surface-900 hover:text-surface-700 underline underline-offset-2">
+        <Link href="/register" className="font-medium text-indigo-600 hover:text-indigo-500 underline underline-offset-2">
           Register
         </Link>
       </p>
