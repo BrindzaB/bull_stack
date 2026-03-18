@@ -45,3 +45,5 @@ export interface FinnhubSearchResultItem {
     symbol: string;
     type: string;
 }
+
+export type Resolution = "1W" | "1M" | "3M" | "1Y";

@@ -1,14 +1,9 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import type { FinnhubQuote } from "@/types/finnhub";
+import { fetchQuote } from "@/lib/api";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 
-async function fetchQuote(symbol: string): Promise<FinnhubQuote> {
-    const res = await fetch(`/api/stocks/${symbol}/quote`);
-    if (!res.ok) throw new Error("Failed to fetch quote");
-    return res.json();
-}
 
 export default function StockQuoteCard({ symbol }: { symbol: string }) {
     const { data, isLoading, isError } = useQuery({

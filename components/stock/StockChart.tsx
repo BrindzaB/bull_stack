@@ -3,22 +3,9 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { subWeeks, subMonths, subYears, fromUnixTime, format} from "date-fns";
-import type { FinnhubCandles } from "@/types/finnhub";
-
-type Resolution = "1W" | "1M" | "3M" | "1Y";
-
-function getRange(resolution: Resolution): {from: number, to: number} {
-    const to = Math.floor(Date.now() / 1000);
-    const now = new Date();
-    const fromDate: Record<Resolution, Date> = {
-        "1W": subWeeks(now, 1),
-        "1M": subMonths(now, 1),
-        "3M": subMonths(now, 3),
-        "1Y": subYears(now, 1),
-    };
-    return { from: Math.floor(fromDate[resolution].getTime() / 1000), to};
-}
+import { fromUnixTime, format} from "date-fns";
+import { fetchCandles } from "@/lib/api";
+import type { Resolution } from "@/types/finnhub";
 
 function getTickInterval(resolution: Resolution): number {
     const intervals: Record<Resolution, number> = {
@@ -30,12 +17,6 @@ function getTickInterval(resolution: Resolution): number {
     return intervals[resolution]
 }
 
-async function fetchCandles(symbol: string, resolution: Resolution): Promise<FinnhubCandles> {
-    const { from, to } = getRange(resolution);
-    const res = await fetch(`/api/stocks/${symbol}/candles?resolution=D&from=${from}&to=${to}`);
-    if (!res.ok) throw new Error("Failed to fetch candles");
-    return res.json();
-}
 
 export default function StockChart({ symbol }: { symbol: string}) {
     const [resolution, setResolution] = useState<Resolution>("1M");

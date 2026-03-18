@@ -3,14 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import type { FinnhubSearchResultItem, FinnhubSearchResult } from "@/types/finnhub";
+import { searchStocks } from "@/lib/api";
 
-async function searchStocks(q: string): Promise<FinnhubSearchResultItem[]> {
-    const res = await fetch(`/api/stocks/search?q=${encodeURIComponent(q)}`);
-    if (!res.ok) throw new Error("Search failed");
-    const data: FinnhubSearchResult = await res.json();
-    return data.result;
-}
 
 export default function StockSearchBar() {
     const [input, setInput] = useState("");
