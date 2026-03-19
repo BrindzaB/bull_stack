@@ -36,7 +36,7 @@ export default function StockQuoteCard({ symbol }: { symbol: string }) {
             <p className="mt-1 text-display-md num text-surface-900">{formatCurrency(data.c)}</p>
             <div className="mt-2">
                 <span className={isPositive ? "badge-up" : "badge-down"}>
-                    {isPositive ? "+" : ""}{formatCurrency(data.d)} ({formatPercent(data.dp / 100)})
+                    {isPositive ? "+" : ""}{formatCurrency(data.d)} ({formatPercent(data.dp)})
                 </span>
             </div>
             <div className="mt-6 grid grid-cols-3 gap-4 border-t border-surface-100 pt-5">

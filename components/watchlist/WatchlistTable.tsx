@@ -28,7 +28,7 @@ function WatchlistRow({ symbol, onRemove }: { symbol: string, onRemove: () => vo
                 {data ? (
                     <span className={isPositive ? "badge-up" : "badge-down"}>
                         {isPositive ? "+" : ""}
-                        {formatPercent(data.dp / 100)}
+                        {formatPercent(data.dp)}
                     </span>
                 ) : (
                     <span className="text-sm text-surface-400">—</span>
