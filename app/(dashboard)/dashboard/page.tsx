@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth"
 import WatchlistWidget from "@/components/watchlist/WatchlistWidget"
 import PortfolioWidget from "@/components/portfolio/PortfolioWidget"
+import NewsWidget from "@/components/news/NewsWidget"
 
 export default async function DashboardPage() {
     const session = await auth()
@@ -14,6 +15,7 @@ export default async function DashboardPage() {
                 <WatchlistWidget />
                 <PortfolioWidget />
             </div>
+            <NewsWidget />
         </div>
     )
 }
