@@ -50,7 +50,7 @@ export default function WatchlistWidget() {
 
             {!isLoading && watchlist.length > 0 && (
                 <div className="divide-y divide-surface-100">
-                    {watchlist.slice(0, 5).map((item) => (
+                    {watchlist.slice(0, 4).map((item) => (
                         <WatchlistWidgetRow key={item.symbol} symbol={item.symbol} />
                     ))}
                 </div>

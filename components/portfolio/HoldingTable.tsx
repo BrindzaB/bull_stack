@@ -26,27 +26,27 @@ export default function HoldingsTable() {
     <div className="card overflow-hidden">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-surface-100 bg-surface-50">
+          <tr className="border-b border-surface-100 bg-brand-500/10">
             <th className="py-3 pl-6 pr-4 text-left">
-              <span className="section-label">Symbol</span>
+              <span className="section-label text-brand-700">Symbol</span>
             </th>
             <th className="py-3 px-4 text-right">
-              <span className="section-label">Shares</span>
+              <span className="section-label text-brand-700">Shares</span>
             </th>
             <th className="py-3 px-4 text-right">
-              <span className="section-label">Avg Cost</span>
+              <span className="section-label text-brand-700">Avg Cost</span>
             </th>
             <th className="py-3 px-4 text-right">
-              <span className="section-label">Current Price</span>
+              <span className="section-label text-brand-700">Current Price</span>
             </th>
             <th className="py-3 px-4 text-right">
-              <span className="section-label">Value</span>
+              <span className="section-label text-brand-700">Value</span>
             </th>
             <th className="py-3 px-4 text-right">
-              <span className="section-label">P&amp;L $</span>
+              <span className="section-label text-brand-700">P&amp;L $</span>
             </th>
             <th className="py-3 pl-4 pr-6 text-right">
-              <span className="section-label">P&amp;L %</span>
+              <span className="section-label text-brand-700">P&amp;L %</span>
             </th>
             <th className="py-3 pl-4 pr-6" />
           </tr>

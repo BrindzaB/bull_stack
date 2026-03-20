@@ -1,6 +1,7 @@
 
 import { cache } from "./cache"
-import type { FinnhubQuote, FinnhubCompanyProfile, FinnhubSearchResult } from "@/types/finnhub"
+import type { FinnhubQuote, FinnhubCompanyProfile, FinnhubSearchResult, FinnhubNewsItem } from "@/types/finnhub"
+import {format, subDays} from "date-fns"
 
 const BASE_URL = "https://finnhub.io/api/v1"
 
@@ -43,3 +44,29 @@ export async function getSymbolSearch(query: string): Promise<FinnhubSearchResul
     return data;
 }
 
+export async function getStockNews(symbol: string): Promise<FinnhubNewsItem[]> {
+    const cacheKey = `news:${symbol}`;
+    const cached = cache.get<FinnhubNewsItem[]>(cacheKey);
+
+    if (cached) return cached;
+
+    const to = format(new Date(), "yyyy-MM-dd");
+    const from = format(subDays(new Date(), 7), "yyyy-MM-dd");
+
+    const res = await fetch(`${BASE_URL}/company-news?symbol=${symbol}&from=${from}&to=${to}&token=${process.env.FINNHUB_API_KEY}`);
+    const data: FinnhubNewsItem[] = await res.json();
+    cache.set(cacheKey, data, 15 * 60_000);
+    return data;
+}
+
+export async function getMarketNews(): Promise<FinnhubNewsItem[]> {
+    const cacheKey = "market-news";
+    const cached = cache.get<FinnhubNewsItem[]>(cacheKey);
+
+    if (cached) return cached;
+
+    const res = await fetch(`${BASE_URL}/news?category=general&token=${process.env.FINNHUB_API_KEY}`);
+    const data: FinnhubNewsItem[] = await res.json();
+    cache.set(cacheKey, data, 15 * 60_000);
+    return data;
+}

@@ -72,15 +72,15 @@ export default function WatchlistTable() {
         <div className="card overflow-hidden">
             <table className="w-full text-sm">
                 <thead>
-                    <tr className="border-b border-surface-100 bg-surface-50">
+                    <tr className="border-b border-surface-100 bg-brand-500/10">
                         <th className="py-3 pl-6 pr-4 text-left">
-                            <span className="section-label">Symbol</span>
+                            <span className="section-label text-brand-700">Symbol</span>
                         </th>
                         <th className="py-3 px-4 text-left">
-                            <span className="section-label">Price</span>
+                            <span className="section-label text-brand-700">Price</span>
                         </th>
                         <th className="py-3 px-4 text-left">
-                            <span className="section-label">Change</span>
+                            <span className="section-label text-brand-700">Change</span>
                         </th>
                         <th className="py-3 pl-4 pr-6" />
                     </tr>

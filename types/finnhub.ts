@@ -47,3 +47,15 @@ export interface FinnhubSearchResultItem {
 }
 
 export type Resolution = "1W" | "1M" | "3M" | "1Y";
+
+export interface FinnhubNewsItem {
+    id: number
+    headline: string
+    summary: string
+    source: string
+    url: string
+    image: string
+    datetime: number
+    category: string
+    related: string
+}

@@ -45,13 +45,13 @@ export default function PortfolioWidget() {
 
           <div className="mt-4 flex items-center justify-between border-t border-surface-100 pt-4">
             <div>
-              <p className="section-label">Total Value</p>
+              <p className="section-label text-brand-700">Total Value</p>
               <p className="num mt-0.5 text-sm font-semibold text-surface-900">
                 {formatCurrency(summary.totalValue)}
               </p>
             </div>
             <div className="text-right">
-              <p className="section-label">Total Return</p>
+              <p className="section-label text-brand-700">Total Return</p>
               <p className={`num mt-0.5 text-sm font-semibold ${summary.totalPnL >= 0 ? "text-up" : "text-down"}`}>
                 {formatPercent(summary.totalPnLPercent)}
               </p>

@@ -67,7 +67,7 @@ const config: Config = {
       },
 
       boxShadow: {
-        card:         "0 0px 0px rgba(0,0,0,0.08), 0 0px 0px rgba(0,0,0,0.05)",
+        card:         "0px 0px 0px rgba(0,0,0,0.10), 0px 0px 0px rgba(0,0,0,0.06)",
         "card-hover": "0 4px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06)",
         dropdown:     "0 4px 16px 0 rgba(0,0,0,0.10), 0 2px 6px -1px rgba(0,0,0,0.08)",
         topbar:       "0 2px 12px rgba(99,102,241,0.20)",
