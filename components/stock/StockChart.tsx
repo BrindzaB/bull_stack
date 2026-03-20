@@ -34,9 +34,9 @@ export default function StockChart({ symbol }: { symbol: string}) {
     const resolutions: Resolution[] = ["1W", "1M", "3M", "1Y"];
 
     return (
-    <div className="card p-8">
+    <div className="card p-8 h-full flex flex-col">
 
-      <div className="mb-6 flex gap-1.5">
+      <div className="mb-6 flex gap-1.5 shrink-0">
         {resolutions.map((r) => (
           <button
             key={r}
@@ -65,52 +65,54 @@ export default function StockChart({ symbol }: { symbol: string}) {
       )}
 
       {!isLoading && !isError && (
-        <ResponsiveContainer width="100%" height={300}>
-          <AreaChart data={chartData}>
-            <defs>
-              <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.35} />
-                <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
-              </linearGradient>
-            </defs>
-            <XAxis
-              dataKey="date"
-              tick={{ fontSize: 11, fill: "#9e9890", fontFamily: "ui-monospace, monospace" }}
-              tickLine={false}
-              axisLine={false}
-              interval={getTickInterval(resolution)}
-            />
-            <YAxis
-              domain={["auto", "auto"]}
-              tick={{ fontSize: 11, fill: "#9e9890", fontFamily: "ui-monospace, monospace" }}
-              tickLine={false}
-              axisLine={false}
-              tickFormatter={(v) => `$${v}`}
-              width={60}
-            />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: "#ffffff",
-                border: "1px solid #dedad1",
-                borderRadius: "10px",
-                fontSize: "12px",
-                fontFamily: "ui-monospace, monospace",
-                boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
-                padding: "8px 12px",
-              }}
-              labelStyle={{ color: "#79736b", marginBottom: "2px" }}
-              formatter={(value) => [`$${Number(value).toFixed(2)}`, "Price"]}
-            />
-            <Area
-              type="monotone"
-              dataKey="price"
-              stroke="#8b5cf6"
-              strokeWidth={1.5}
-              fill="url(#priceGradient)"
-              dot={false}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+        <div className="flex-1 min-h-0">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={chartData}>
+              <defs>
+                <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.35} />
+                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <XAxis
+                dataKey="date"
+                tick={{ fontSize: 11, fill: "#9e9890", fontFamily: "ui-monospace, monospace" }}
+                tickLine={false}
+                axisLine={false}
+                interval={getTickInterval(resolution)}
+              />
+              <YAxis
+                domain={["auto", "auto"]}
+                tick={{ fontSize: 11, fill: "#9e9890", fontFamily: "ui-monospace, monospace" }}
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(v) => `$${v}`}
+                width={60}
+              />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #dedad1",
+                  borderRadius: "10px",
+                  fontSize: "12px",
+                  fontFamily: "ui-monospace, monospace",
+                  boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
+                  padding: "8px 12px",
+                }}
+                labelStyle={{ color: "#79736b", marginBottom: "2px" }}
+                formatter={(value) => [`$${Number(value).toFixed(2)}`, "Price"]}
+              />
+              <Area
+                type="monotone"
+                dataKey="price"
+                stroke="#8b5cf6"
+                strokeWidth={1.5}
+                fill="url(#priceGradient)"
+                dot={false}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
       )}
     </div>
   );
