@@ -1,4 +1,4 @@
-import type { FinnhubQuote, FinnhubSearchResultItem, FinnhubSearchResult, FinnhubCandles, Resolution } from "@/types/finnhub";
+import type { FinnhubQuote, FinnhubSearchResultItem, FinnhubSearchResult, FinnhubCandles, Resolution, FinnhubNewsItem } from "@/types/finnhub";
 import type { PortfolioResponse } from "@/types/portfolio";
 import { subWeeks, subMonths, subYears} from "date-fns";
 
@@ -110,4 +110,18 @@ export async function fetchCandles(symbol: string, resolution: Resolution): Prom
     const res = await fetch(`/api/stocks/${symbol}/candles?resolution=D&from=${from}&to=${to}`);
     if (!res.ok) throw new Error("Failed to fetch candles");
     return res.json();
+}
+
+// News
+
+export async function fetchStockNews(symbol: string): Promise<FinnhubNewsItem[]> {
+  const res = await fetch(`/api/stocks/${symbol}/news`);
+  if (!res.ok) throw new Error("Failed to fetch news");
+  return res.json();
+}
+
+export async function fetchMarketNews(): Promise<FinnhubNewsItem[]> {
+  const res = await fetch(`/api/stocks/market-news`);
+  if (!res.ok) throw new Error("Failed to fetch news");
+  return res.json();
 }
