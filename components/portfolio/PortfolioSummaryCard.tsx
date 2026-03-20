@@ -18,7 +18,7 @@ export default function PortfolioSummaryCard() {
 
   return (
     <div className="card p-6">
-      <h2 className="mb-4 text-sm font-semibold text-surface-900">Portfolio Summary</h2>
+      <h2 className="mb-4 text-md font-semibold text-brand-700">Portfolio Summary</h2>
 
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
 

@@ -10,7 +10,7 @@ export default function PortfolioWidget() {
   return (
     <div className="card p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-surface-900">Portfolio</h2>
+        <h2 className="text-md font-semibold text-brand-700">Portfolio</h2>
         <Link href="/portfolio" className="text-xs text-brand-600">
           View all →
         </Link>
@@ -28,7 +28,7 @@ export default function PortfolioWidget() {
             {holdings.slice(0, 3).map((holding) => {
               const isGain = holding.pnl >= 0;
               return (
-                <div key={holding.id} className="flex items-center justify-between py-2.5">
+                <Link href={`/stocks/${holding.symbol}`} key={holding.id} className="flex items-center justify-between py-2.5">
                   <span className="num font-semibold text-surface-900">{holding.symbol}</span>
                   <div className="text-right">
                     <p className="num text-sm font-medium text-surface-800">
@@ -38,7 +38,7 @@ export default function PortfolioWidget() {
                       {formatPercent(holding.pnlPercent)}
                     </p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

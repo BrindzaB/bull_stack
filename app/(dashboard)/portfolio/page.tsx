@@ -11,8 +11,7 @@ export default function PortfolioPage() {
       return (
     <div className="space-y-3">
 
-      <div className="flex items-center justify-between">
-        <h1 className="text-display-sm text-surface-900">Portfolio</h1>
+      <div className="flex items-center justify-start">
         <button
           onClick={() => setModalOpen(true)}
           className="btn-primary"

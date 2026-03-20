@@ -5,17 +5,19 @@ import { useWatchlist } from "@/hooks/useWatchlist";
 import type { FinnhubQuote } from "@/types/finnhub";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import { fetchQuote } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 function WatchlistRow({ symbol, onRemove }: { symbol: string, onRemove: () => void}) {
     const { data } = useQuery<FinnhubQuote>({
         queryKey: ["quote", symbol],
         queryFn: () => fetchQuote(symbol),
     });
-
+    const router = useRouter();
     const isPositive = (data?.dp ?? 0) >= 0;
 
     return (
-        <tr className="group border-b border-surface-100 transition-colors hover:bg-surface-50">
+        <tr className="group border-b border-surface-100 transition-colors hover:bg-surface-50 cursor-pointer"
+            onClick={() => router.push(`/stocks/${symbol}`)}>
             <td className="py-3.5 pl-6 pr-4">
                 <span className="num font-semibold text-surface-900">{symbol}</span>
             </td>
@@ -36,7 +38,7 @@ function WatchlistRow({ symbol, onRemove }: { symbol: string, onRemove: () => vo
             </td>
             <td className="py-3.5 pl-4 pr-6 text-right">
                 <button
-                    onClick={onRemove}
+                    onClick={(e) => { e.stopPropagation(); onRemove(); }}
                     className="rounded-md px-2 py-1 text-xs font-medium text-surface-500
                                opacity-0 transition-all
                                hover:bg-rose-100 hover:text-rose-600

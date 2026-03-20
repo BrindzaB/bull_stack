@@ -16,7 +16,7 @@ function WatchlistWidgetRow({symbol}: {symbol: string}) {
     const isPositive = (data?.dp ?? 0) >= 0
 
     return (
-        <div className="flex items-center justify-between py-2.5">
+        <Link href={`/stocks/${symbol}`} className="flex items-center justify-between py-2.5">
             <span className="num font-semibold text-surface-900">{symbol}</span>
             <div className="text-right">
                 <p className="num text-sm font-medium text-surface-800">
@@ -26,7 +26,7 @@ function WatchlistWidgetRow({symbol}: {symbol: string}) {
                     {data ? `${isPositive ? "+" : ""}${data.dp.toFixed(2)}%` : "—"}
                 </p>
             </div>
-        </div>
+        </Link>
     )
 }
 
@@ -36,7 +36,7 @@ export default function WatchlistWidget() {
     return (
         <div className="card p-6">
             <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-surface-900">Watchlist</h2>
+                <h2 className="text-md font-semibold text-brand-700">Watchlist</h2>
                 <Link href="/watchlist" className="text-xs text-brand-500 transition-colors hover:text-brand-700">
                     View all →
                 </Link>

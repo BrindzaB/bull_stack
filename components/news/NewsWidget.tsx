@@ -14,7 +14,7 @@ export default function NewsWidget() {
     return (
         <div className="card p-6">
             <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-surface-900">Market News</h2>
+                <h2 className="text-md font-semibold text-brand-700">Market News</h2>
                 <Link href="/news" className="text-xs text-brand-500 transition-colors hover:text-brand-700">
                     View all →
                 </Link>

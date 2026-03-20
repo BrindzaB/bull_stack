@@ -55,7 +55,7 @@ export async function getStockNews(symbol: string): Promise<FinnhubNewsItem[]> {
 
     const res = await fetch(`${BASE_URL}/company-news?symbol=${symbol}&from=${from}&to=${to}&token=${process.env.FINNHUB_API_KEY}`);
     const data: FinnhubNewsItem[] = await res.json();
-    cache.set(cacheKey, data, 15 * 60_000);
+    cache.set(cacheKey, data, 2 * 60 * 60_000);
     return data;
 }
 
@@ -66,7 +66,9 @@ export async function getMarketNews(): Promise<FinnhubNewsItem[]> {
     if (cached) return cached;
 
     const res = await fetch(`${BASE_URL}/news?category=general&token=${process.env.FINNHUB_API_KEY}`);
+    if (!res.ok) throw new Error(`Finnhub error: ${res.status}`);
     const data: FinnhubNewsItem[] = await res.json();
-    cache.set(cacheKey, data, 15 * 60_000);
+    if (!Array.isArray(data) || data.length === 0) throw new Error("No market news returned");
+    cache.set(cacheKey, data, 2 * 60 * 60_000);
     return data;
 }

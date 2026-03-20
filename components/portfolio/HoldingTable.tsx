@@ -2,9 +2,11 @@
 
 import { usePortfolio } from "@/hooks/usePortfolio";
 import { formatCurrency, formatPercent } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function HoldingsTable() {
   const { holdings, isLoading, removeHolding } = usePortfolio();
+  const router = useRouter();
 
   if (isLoading) {
     return (
@@ -58,7 +60,8 @@ export default function HoldingsTable() {
             return (
               <tr
                 key={holding.id}
-                className="group border-b border-surface-100 transition-colors hover:bg-surface-50"
+                className="group border-b border-surface-100 transition-colors hover:bg-surface-50 cursor-pointer"
+                onClick={() => router.push(`/stocks/${holding.symbol}`)}
               >
                 <td className="py-3.5 pl-6 pr-4">
                   <span className="num font-semibold text-surface-900">{holding.symbol}</span>
@@ -100,7 +103,7 @@ export default function HoldingsTable() {
 
                 <td className="py-3.5 pl-4 pr-6 text-right">
                   <button
-                    onClick={() => removeHolding(holding.id)}
+                    onClick={(e) => { e.stopPropagation(); removeHolding(holding.id)}}
                     className="rounded-md px-2 py-1 text-xs font-medium text-surface-500
                                opacity-0 transition-all
                                hover:bg-rose-100 hover:text-rose-600

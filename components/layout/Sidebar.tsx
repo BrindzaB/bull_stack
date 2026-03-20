@@ -16,7 +16,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="w-56 shrink-0 self-start sticky top-[4.5rem] h-[calc(100vh-5.5rem)]
+      className="w-56 shrink-0 h-full
                  rounded-2xl bg-white shadow-card border border-gray-200 flex flex-col overflow-hidden"
     >
       <nav className="flex-1 px-3 py-4 space-y-0.5">
@@ -43,9 +43,6 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="px-5 py-4 border-t border-surface-100">
-        <p className="text-xs text-surface-400">⌘K to search</p>
-      </div>
     </aside>
   )
 }

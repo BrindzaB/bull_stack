@@ -7,15 +7,14 @@ export default async function DashboardPage() {
     const session = await auth()
 
     return (
-        <div className="space-y-3">
-            <div>
-                <h1 className="text-display-sm text-surface-900">Dashboard</h1>
-            </div>
+        <div className="space-y-6">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 <WatchlistWidget />
                 <PortfolioWidget />
             </div>
-            <NewsWidget />
+            <div>
+                <NewsWidget />
+            </div>
         </div>
     )
 }

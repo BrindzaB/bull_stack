@@ -11,8 +11,7 @@ export default function NewsPage() {
     })
 
     return (
-        <div className="space-y-3">
-            <h1 className="text-display-sm text-surface-900">Market News</h1>
+        <div className="h-full flex flex-col">
 
             {isLoading && (
                 <div className="card p-6">
@@ -26,11 +25,20 @@ export default function NewsPage() {
                 </div>
             )}
 
-            {!isLoading && !isError && data && (
-                <div className="space-y-3">
-                    {data.map((article) => (
-                        <NewsCard key={article.id} article={article} />
-                    ))}
+            {!isLoading && !isError && data?.length === 0 && (
+                <div className="card p-6">
+                    <p className="text-sm text-surface-500">No news available right now.</p>
+                </div>
+            )}
+
+            {!isLoading && !isError && data && data.length > 0 && (
+                <div className="card flex flex-col flex-1 min-h-0 p-6">
+                    <h2 className="mb-4 text-md font-semibold text-brand-700">Market News</h2>
+                    <div className="divide-y divide-surface-100 overflow-y-auto flex-1 min-h-0">
+                        {data.map((article) => (
+                            <NewsCard key={article.id} article={article} />
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
