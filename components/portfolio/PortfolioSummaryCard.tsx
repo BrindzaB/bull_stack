@@ -2,23 +2,34 @@
 
 import { usePortfolio } from "@/hooks/usePortfolio";
 import { formatCurrency, formatPercent } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/Skeleton";
+
+function SummarySkeleton() {
+  return (
+    <div className="card p-6">
+      <Skeleton className="h-5 w-36 mb-6" />
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i}>
+            <Skeleton className="h-3 w-20 mb-2" />
+            <Skeleton className="h-7 w-28" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function PortfolioSummaryCard() {
   const { summary, isLoading } = usePortfolio();
 
-  if (isLoading) {
-    return (
-      <div className="card p-6">
-        <p className="text-sm text-surface-500">Loading summary...</p>
-      </div>
-    );
-  }
+  if (isLoading) return <SummarySkeleton />;
 
   const isGain = summary.totalPnL >= 0;
 
   return (
     <div className="card p-6">
-      <h2 className="mb-4 text-md font-semibold text-brand-700">Portfolio Summary</h2>
+      <h2 className="mb-4 text-md font-semibold text-brand-500">Portfolio Summary</h2>
 
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
 

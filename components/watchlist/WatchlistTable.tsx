@@ -6,6 +6,7 @@ import type { FinnhubQuote } from "@/types/finnhub";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import { fetchQuote } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 function WatchlistRow({ symbol, onRemove }: { symbol: string, onRemove: () => void}) {
     const { data } = useQuery<FinnhubQuote>({
@@ -51,16 +52,43 @@ function WatchlistRow({ symbol, onRemove }: { symbol: string, onRemove: () => vo
     )
 }
 
+function WatchlistSkeleton() {
+    return (
+        <div className="card overflow-hidden">
+            <table className="w-full text-sm">
+                <thead>
+                    <tr className="border-b border-surface-100 bg-brand-500/10">
+                        <th className="py-3 pl-6 pr-4 text-left">
+                            <span className="section-label text-brand-700">Symbol</span>
+                        </th>
+                        <th className="py-3 px-4 text-left">
+                            <span className="section-label text-brand-700">Price</span>
+                        </th>
+                        <th className="py-3 px-4 text-left">
+                            <span className="section-label text-brand-700">Change</span>
+                        </th>
+                        <th className="py-3 pl-4 pr-6" />
+                    </tr>
+                </thead>
+                <tbody>
+                    {Array.from({ length: 4 }).map((_, i) => (
+                        <tr key={i} className="border-b border-surface-100">
+                            <td className="py-3.5 pl-6 pr-4"><Skeleton className="h-4 w-14" /></td>
+                            <td className="py-3.5 px-4"><Skeleton className="h-4 w-20" /></td>
+                            <td className="py-3.5 px-4"><Skeleton className="h-5 w-16 rounded-md" /></td>
+                            <td className="py-3.5 pl-4 pr-6" />
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
 export default function WatchlistTable() {
     const { watchlist, isLoading, removeFromWatchlist } = useWatchlist()
 
-    if (isLoading) {
-        return (
-            <div className="card p-8">
-                <p className="text-sm text-surface-500">Loading watchlist...</p>
-            </div>
-        );
-    }
+    if (isLoading) return <WatchlistSkeleton />
 
     if (watchlist.length === 0) {
         return (

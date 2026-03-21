@@ -2,6 +2,7 @@
 
 import { signOut } from "next-auth/react"
 import { Session } from "next-auth"
+import { LogOut } from "lucide-react"
 
 interface Props {
     session: Session
@@ -15,7 +16,7 @@ export function UserMenu({ session }: Props) {
                 onClick={() => signOut({ callbackUrl: "/login"})}
                 className="text-xs font-medium text-black/80 transition-colors hover:text-brand-500"
             >
-                Sign out
+                <LogOut className="text-brand-500 hover:text-brand-300"/>
             </button>
         </div>
     )

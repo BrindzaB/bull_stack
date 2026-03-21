@@ -16,8 +16,8 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="w-56 shrink-0 h-full
-                 rounded-2xl bg-white shadow-card border border-gray-200 flex flex-col overflow-hidden"
+      className="hidden md:flex w-56 shrink-0 h-full
+                 rounded-2xl bg-white shadow-card border border-gray-200 flex-col overflow-hidden"
     >
       <nav className="flex-1 px-3 py-4 space-y-0.5">
         {navItems.map(({ href, label, icon: Icon }) => {

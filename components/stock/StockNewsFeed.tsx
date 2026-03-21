@@ -3,6 +3,21 @@
 import { useQuery } from "@tanstack/react-query"
 import { fetchStockNews } from "@/lib/api"
 import { format } from "date-fns"
+import { Skeleton } from "@/components/ui/Skeleton"
+
+function StockNewsFeedSkeleton() {
+    return (
+        <div className="flex-1 divide-y divide-surface-100 -mx-6 px-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="py-3 space-y-2">
+                    <Skeleton className="h-3 w-28" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                </div>
+            ))}
+        </div>
+    )
+}
 
 export default function StockNewsFeed({ symbol }: { symbol: string }) {
     const { data, isLoading, isError } = useQuery({
@@ -14,9 +29,7 @@ export default function StockNewsFeed({ symbol }: { symbol: string }) {
         <div className="card p-6 flex flex-col h-full min-h-0">
             <h2 className="text-sm font-semibold text-surface-900 mb-4 shrink-0">Recent News</h2>
 
-            {isLoading && (
-                <p className="text-sm text-surface-500">Loading news...</p>
-            )}
+            {isLoading && <StockNewsFeedSkeleton />}
 
             {isError && (
                 <p className="text-sm text-down">Failed to load news.</p>

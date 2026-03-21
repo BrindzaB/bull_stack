@@ -31,6 +31,8 @@ BullStack is a full-stack stock tracking dashboard where you can monitor live pr
 - **Portfolio** — Track holdings with real-time P&L calculations; add/remove positions with average cost tracking
 - **Market News** — General market headlines feed with article links; 2-hour server-side cache
 - **Dashboard** — Overview with portfolio summary, watchlist widget, and latest news
+- **Skeleton loaders** — Every data-fetching component shows a shimmer placeholder that matches its real layout, eliminating layout shift
+- **Mobile responsive** — Bottom tab navigation on small screens, sidebar on desktop; stock page and portfolio table scroll correctly on mobile
 
 ---
 
@@ -53,12 +55,13 @@ bullstack/
 │       ├── portfolio/             # GET + POST; [id]/ PUT + DELETE
 │       └── stocks/[symbol]/       # quote/, candles/, profile/, news/; search/; market-news/
 ├── components/
+│   ├── ui/                        # Skeleton (shimmer loading placeholder)
 │   ├── auth/                      # LoginForm, RegisterForm
 │   ├── stock/                     # StockSearchBar, StockQuoteCard, StockChart, StockNewsFeed
 │   ├── watchlist/                 # WatchlistTable, WatchlistWidget, AddToWatchlistButton
-│   ├── portfolio/                 # HoldingsTable, PortfolioSummaryCard, AddHoldingModal, PortfolioWidget
-│   ├── news/                      # NewsCard
-│   ├── layout/                    # Sidebar, Topbar, UserMenu
+│   ├── portfolio/                 # HoldingTable, PortfolioSummaryCard, PortfolioWidget, AddHoldingModal
+│   ├── news/                      # NewsCard, NewsWidget
+│   ├── layout/                    # Sidebar, BottomNav, Topbar, UserMenu
 │   └── providers/                 # ReactQueryProvider
 ├── lib/
 │   ├── auth.ts                    # NextAuth v5 config
@@ -167,10 +170,13 @@ Holdings table with Symbol, Shares, Avg Cost, Current Price, Value, P&L $ and P&
 **Phase 6 — News Feed**
 Per-stock news on the stock detail page. General market headlines on `/news`. 2-hour server-side cache. Clickable articles open in a new tab.
 
+**Phase 7 — Polish & Responsive**
+Shimmer skeleton loaders on all data-fetching components. Error states via React Query `isError`. Mobile-responsive layout with bottom tab navigation. Stock chart adapts tick density and Y-axis position on mobile. Holdings table horizontally scrollable on mobile.
+
 ### Upcoming
 
-**Phase 7 — Production Polish**
-Loading skeletons, error boundaries, `<Suspense>` wrappers, mobile-responsive layout, end-to-end deploy validation.
+**Deployment**
+Add env vars to Vercel, set Google OAuth redirect URIs to production URL, run `npx prisma migrate deploy` against Railway production DB, end-to-end test with a fresh account.
 
 ---
 

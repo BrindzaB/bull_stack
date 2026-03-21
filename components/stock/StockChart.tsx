@@ -1,25 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { fromUnixTime, format} from "date-fns";
 import { fetchCandles } from "@/lib/api";
 import type { Resolution } from "@/types/finnhub";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 function getTickInterval(resolution: Resolution): number {
     const intervals: Record<Resolution, number> = {
         "1W": 0,
-        "1M": 1,
+        "1M": 3,
         "3M": 10,
         "1Y": 30,
     }
     return intervals[resolution]
 }
 
+function getMobileTickInterval(resolution: Resolution): number {
+    const intervals: Record<Resolution, number> = {
+        "1W": 1,
+        "1M": 6,
+        "3M": 20,
+        "1Y": 60,
+    }
+    return intervals[resolution]
+}
 
 export default function StockChart({ symbol }: { symbol: string}) {
     const [resolution, setResolution] = useState<Resolution>("1M");
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 768);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ["candles", symbol, resolution],
@@ -34,7 +52,7 @@ export default function StockChart({ symbol }: { symbol: string}) {
     const resolutions: Resolution[] = ["1W", "1M", "3M", "1Y"];
 
     return (
-    <div className="card p-8 h-full flex flex-col">
+    <div className="card p-4 lg:p-8 h-full flex flex-col">
 
       <div className="mb-6 flex gap-1.5 shrink-0">
         {resolutions.map((r) => (
@@ -53,14 +71,14 @@ export default function StockChart({ symbol }: { symbol: string}) {
       </div>
 
       {isLoading && (
-        <div className="flex h-64 items-center justify-center">
-          <p className="text-sm text-surface-500">Loading chart...</p>
+        <div className="flex-1 min-h-0">
+          <Skeleton className="h-full w-full rounded-xl" />
         </div>
       )}
 
       {isError && (
         <div className="flex h-64 items-center justify-center">
-          <p className="text-sm text-down">Failed to load chart.</p>
+          <p className="text-sm text-down">Failed to load chart data.</p>
         </div>
       )}
 
@@ -79,7 +97,8 @@ export default function StockChart({ symbol }: { symbol: string}) {
                 tick={{ fontSize: 11, fill: "#9e9890", fontFamily: "ui-monospace, monospace" }}
                 tickLine={false}
                 axisLine={false}
-                interval={getTickInterval(resolution)}
+                interval={isMobile ? getMobileTickInterval(resolution) : getTickInterval(resolution)}
+                padding={{ left: 15, right: 14 }}
               />
               <YAxis
                 domain={["auto", "auto"]}
@@ -87,7 +106,8 @@ export default function StockChart({ symbol }: { symbol: string}) {
                 tickLine={false}
                 axisLine={false}
                 tickFormatter={(v) => `$${v}`}
-                width={60}
+                orientation={isMobile ? "right" : "left"}
+                width={isMobile ? 48 : 60}
               />
               <Tooltip
                 contentStyle={{
