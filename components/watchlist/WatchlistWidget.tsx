@@ -53,7 +53,7 @@ export default function WatchlistWidget() {
     return (
         <div className="card p-6">
             <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-md font-semibold text-brand-500">Watchlist</h2>
+                <h2 className="text-md font-semibold text-white">Watchlist</h2>
                 <Link href="/watchlist" className="text-xs text-brand-500 transition-colors hover:text-brand-300">
                     View all →
                 </Link>

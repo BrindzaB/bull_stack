@@ -61,8 +61,8 @@ export default function StockChart({ symbol }: { symbol: string}) {
             onClick={() => setResolution(r)}
             className={`rounded-lg px-3 py-1 text-sm font-medium transition-colors focus:outline-none ${
               resolution === r
-                ? "bg-brand-500 text-white"
-                : "bg-surface-100 text-surface-600 hover:bg-surface-200"
+                ? "bg-[rgba(34,211,238,0.15)] text-[#22d3ee]"
+                : "text-white hover:text-white/80 hover:bg-white/[0.06]"
             }`}
           >
             {r}
@@ -88,13 +88,13 @@ export default function StockChart({ symbol }: { symbol: string}) {
             <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.35} />
-                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#ffffff" stopOpacity={0.6} />
+                  <stop offset="95%" stopColor="#ffffff" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis
                 dataKey="date"
-                tick={{ fontSize: 11, fill: "#9e9890", fontFamily: "ui-monospace, monospace" }}
+                tick={{ fontSize: 11, fill: "#ffffff", fontFamily: "ui-monospace, monospace" }}
                 tickLine={false}
                 axisLine={false}
                 interval={isMobile ? getMobileTickInterval(resolution) : getTickInterval(resolution)}
@@ -102,7 +102,7 @@ export default function StockChart({ symbol }: { symbol: string}) {
               />
               <YAxis
                 domain={["auto", "auto"]}
-                tick={{ fontSize: 11, fill: "#9e9890", fontFamily: "ui-monospace, monospace" }}
+                tick={{ fontSize: 11, fill: "#ffffff", fontFamily: "ui-monospace, monospace" }}
                 tickLine={false}
                 axisLine={false}
                 tickFormatter={(v) => `$${v}`}
@@ -111,21 +111,22 @@ export default function StockChart({ symbol }: { symbol: string}) {
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #dedad1",
+                  backgroundColor: "rgba(19,19,24,0.95)",
+                  border: "1px solid rgba(72,71,77,0.30)",
                   borderRadius: "10px",
                   fontSize: "12px",
                   fontFamily: "ui-monospace, monospace",
-                  boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
+                  boxShadow: "0 8px 32px rgba(20,10,40,0.40)",
                   padding: "8px 12px",
                 }}
-                labelStyle={{ color: "#79736b", marginBottom: "2px" }}
+                labelStyle={{ color: "rgba(255,255,255,0.45)", marginBottom: "2px" }}
+                itemStyle={{ color: "#f8f5fd" }}
                 formatter={(value) => [`$${Number(value).toFixed(2)}`, "Price"]}
               />
               <Area
                 type="monotone"
                 dataKey="price"
-                stroke="#8b5cf6"
+                stroke="#ffffff"
                 strokeWidth={1.5}
                 fill="url(#priceGradient)"
                 dot={false}

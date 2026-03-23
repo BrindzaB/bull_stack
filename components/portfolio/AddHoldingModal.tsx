@@ -58,21 +58,21 @@ function SymbolSearch({value, onChange}: SymbolSearchProps) {
             className="input-base w-full"
         />
         {open && debouncedQuery.length >= 1 && (
-            <ul className="absolute z-50 mt-1.5 w-full overflow-hidden rounded-xl border border-surface-200 bg-white shadow-dropdown">
+            <ul className="absolute z-50 mt-1.5 w-full overflow-hidden rounded-xl backdrop-blur-xl" style={{ background: 'rgba(12,18,50,0.95)', border: '1px solid rgba(255,255,255,0.10)', boxShadow: '0 16px 48px rgba(0,0,20,0.50)' }}>
             {isFetching && (
-                <li className="px-4 py-2.5 text-sm text-surface-500">Searching...</li>
+                <li className="px-4 py-2.5 text-sm text-white/50">Searching...</li>
             )}
             {!isFetching && results.length === 0 && (
-                <li className="px-4 py-2.5 text-sm text-surface-500">No results</li>
+                <li className="px-4 py-2.5 text-sm text-white/50">No results</li>
             )}
             {results.map((item) => (
                 <li
                 key={item.symbol}
                 onMouseDown={() => handleSelect(item.symbol)}
-                className="flex cursor-pointer items-center justify-between px-4 py-2.5 text-sm transition-colors hover:bg-surface-50"
+                className="flex cursor-pointer items-center justify-between px-4 py-2.5 text-sm transition-colors hover:bg-white/[0.06]"
                 >
-                <span className="num font-semibold text-surface-900">{item.symbol}</span>
-                <span className="ml-3 truncate text-xs text-surface-500">{item.description}</span>
+                <span className="num font-semibold text-[#f8f5fd]">{item.symbol}</span>
+                <span className="ml-3 truncate text-xs text-white/50">{item.description}</span>
                 </li>
             ))}
             </ul>
@@ -121,7 +121,7 @@ export default function AddHoldingModal({ isOpen, onClose }: AddHoldingModalProp
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
       onMouseDown={onClose}
     >
       <div
@@ -129,10 +129,10 @@ export default function AddHoldingModal({ isOpen, onClose }: AddHoldingModalProp
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-display-sm text-surface-900">Add Holding</h2>
+          <h2 className="text-display-sm text-[#f8f5fd]">Add Holding</h2>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-surface-400 transition-colors hover:bg-surface-50 hover:text-surface-900"
+            className="rounded-lg p-1.5 text-white/40 transition-colors hover:bg-white/[0.08] hover:text-white"
           >
             <X size={18} />
           </button>

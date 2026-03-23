@@ -38,7 +38,7 @@ export default function NewsWidget() {
     return (
         <div className="card p-6">
             <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-md font-semibold text-brand-500">Market News</h2>
+                <h2 className="text-md font-semibold text-white">Market News</h2>
                 <Link href="/news" className="text-xs text-brand-500 transition-colors hover:text-brand-300">
                     View all →
                 </Link>
@@ -65,7 +65,7 @@ export default function NewsWidget() {
                             <p className="section-label mb-0.5">
                                 {article.source} · {format(new Date(article.datetime * 1000), "MMM d")}
                             </p>
-                            <p className="text-sm font-medium text-surface-900 line-clamp-1 group-hover:text-brand-500 transition-colors">
+                            <p className="text-sm font-medium text-surface-900 line-clamp-1 group-hover:text-brand-100 transition-colors">
                                 {article.headline}
                             </p>
                         </a>

@@ -11,7 +11,7 @@ function QuoteSkeleton() {
             <Skeleton className="h-3 w-12 mb-2" />
             <Skeleton className="h-9 w-40 mb-3" />
             <Skeleton className="h-5 w-28 rounded-md" />
-            <div className="mt-6 grid grid-cols-3 gap-4 border-t border-surface-100 pt-5">
+            <div className="mt-6 grid grid-cols-3 gap-4 pt-5" style={{ borderTop: '1px solid rgba(72,71,77,0.22)' }}>
                 {["Open", "High", "Low"].map((label) => (
                     <div key={label}>
                         <p className="section-label">{label}</p>
@@ -45,24 +45,24 @@ export default function StockQuoteCard({ symbol }: { symbol: string }) {
     return (
         <div className="card p-8">
             <p className="section-label">{symbol}</p>
-            <p className="mt-1 text-display-md num text-surface-900">{formatCurrency(data.c)}</p>
+            <p className="mt-1 text-display-md num text-[#f8f5fd]">{formatCurrency(data.c)}</p>
             <div className="mt-2">
                 <span className={isPositive ? "badge-up" : "badge-down"}>
                     {isPositive ? "+" : ""}{formatCurrency(data.d)} ({formatPercent(data.dp)})
                 </span>
             </div>
-            <div className="mt-6 grid grid-cols-3 gap-4 border-t border-surface-100 pt-5">
+            <div className="mt-6 grid grid-cols-3 gap-4 pt-5" style={{ borderTop: '1px solid rgba(72,71,77,0.22)' }}>
                 <div>
                     <p className="section-label">Open</p>
-                    <p className="num mt-1 text-sm font-medium text-surface-800">{formatCurrency(data.o)}</p>
+                    <p className="num mt-1 text-sm font-medium text-white/80">{formatCurrency(data.o)}</p>
                 </div>
                 <div>
                     <p className="section-label">High</p>
-                    <p className="num mt-1 text-sm font-medium text-surface-800">{formatCurrency(data.h)}</p>
+                    <p className="num mt-1 text-sm font-medium text-white/80">{formatCurrency(data.h)}</p>
                 </div>
                 <div>
                     <p className="section-label">Low</p>
-                    <p className="num mt-1 text-sm font-medium text-surface-800">{formatCurrency(data.l)}</p>
+                    <p className="num mt-1 text-sm font-medium text-white/80">{formatCurrency(data.l)}</p>
                 </div>
             </div>
         </div>

@@ -29,20 +29,20 @@ export default function PortfolioSummaryCard() {
 
   return (
     <div className="card p-6">
-      <h2 className="mb-4 text-md font-semibold text-brand-500">Portfolio Summary</h2>
+      <h2 className="mb-4 text-md font-semibold text-white">Portfolio Summary</h2>
 
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
 
         <div>
           <p className="section-label">Total Value</p>
-          <p className="num mt-1 text-display-sm text-surface-900">
+          <p className="num mt-1 text-display-sm text-[#f8f5fd]">
             {formatCurrency(summary.totalValue)}
           </p>
         </div>
 
         <div>
           <p className="section-label">Total Cost</p>
-          <p className="num mt-1 text-display-sm text-surface-900">
+          <p className="num mt-1 text-display-sm text-[#f8f5fd]">
             {formatCurrency(summary.totalCost)}
           </p>
         </div>

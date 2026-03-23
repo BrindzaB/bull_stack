@@ -11,12 +11,12 @@ interface Props {
 export function UserMenu({ session }: Props) {
     return (
         <div className="flex items-center gap-4">
-            <span className="hidden text-xs text-black/70 sm:block">{session.user?.email}</span>
+            <span className="hidden text-xs text-white/50 sm:block">{session.user?.email}</span>
             <button
                 onClick={() => signOut({ callbackUrl: "/login"})}
-                className="text-xs font-medium text-black/80 transition-colors hover:text-brand-500"
+                className="text-xs font-medium text-white/70 transition-colors hover:text-[#22d3ee]"
             >
-                <LogOut className="text-brand-500 hover:text-brand-300"/>
+                <LogOut className="text-[#22d3ee] hover:text-[#67e8f9]"/>
             </button>
         </div>
     )

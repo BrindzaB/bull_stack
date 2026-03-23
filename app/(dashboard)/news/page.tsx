@@ -56,7 +56,7 @@ export default function NewsPage() {
 
             {!isError && data && data.length > 0 && (
                 <div className="card flex flex-col flex-1 min-h-0 p-6">
-                    <h2 className="mb-4 text-md font-semibold text-brand-500">Market News</h2>
+                    <h2 className="mb-4 text-md font-semibold text-white">Market News</h2>
                     <div className="divide-y divide-surface-100 overflow-y-auto flex-1 min-h-0">
                         {data.map((article) => (
                             <NewsCard key={article.id} article={article} />

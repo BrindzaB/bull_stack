@@ -26,11 +26,10 @@
                       {article.source} · {format(new Date(article.datetime *    
   1000), "MMM d")}                                                                
                   </p>                                                          
-                  <p className="text-sm font-semibold text-surface-900            
-  line-clamp-2 group-hover:text-brand-500 transition-colors">                     
+                  <p className="text-sm font-semibold text-[#f8f5fd] line-clamp-2 group-hover:text-[#22d3ee] transition-colors">
                       {article.headline}
-                  </p>                                                            
-                  <p className="text-xs text-surface-500 line-clamp-2 mt-0.5">  
+                  </p>
+                  <p className="text-xs text-white/50 line-clamp-2 mt-0.5">
                       {article.summary}                                           
                   </p>                                                            
               </div>                                                                                                                                                                                    

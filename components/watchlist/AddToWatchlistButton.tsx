@@ -21,13 +21,13 @@ export default function AddToWatchlistButton({symbol}: {symbol: string}) {
             onClick={handleClick}
             className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-all
                 ${isInWatchlist
-                    ? "border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100"
-                    : "border-surface-200 bg-white text-surface-600 hover:bg-surface-50 hover:border-surface-300"
+                    ? "border-[rgba(34,211,238,0.4)] bg-[rgba(34,211,238,0.1)] text-[#22d3ee] hover:bg-[rgba(34,211,238,0.18)]"
+                    : "border-white/20 bg-white/5 text-white/60 hover:bg-white/10 hover:border-white/30"
                 }`}
         >
             <Star
                 size={14}
-                className={isInWatchlist ? "text-amber-500" : "text-surface-400"}
+                className={isInWatchlist ? "text-[#22d3ee]" : "text-white/40"}
                 fill={isInWatchlist ? "currentColor" : "none"}
             />
             {isInWatchlist ? "Watching" : "Watch"}

@@ -12,35 +12,38 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
 
-        // Cool neutral slate — replaces warm parchment surface-* scale
+        // Dark-mode surface scale — rgba values so they layer correctly over the dark bg
         surface: {
-          50:  "#f8f9fc",
-          100: "#f1f3f8",
-          200: "#e4e7f2",
-          300: "#cdd2e8",
-          400: "#a4accb",
-          500: "#6b75a0",
-          600: "#4f5880",
-          700: "#3a4168",
-          800: "#272d52",
-          900: "#161b3c",
+          50:  "rgba(255,255,255,0.04)",   // subtle hover bg on glass
+          100: "rgba(255,255,255,0.07)",
+          200: "rgba(255,255,255,0.12)",   // ghost borders
+          300: "rgba(255,255,255,0.22)",
+          400: "rgba(255,255,255,0.38)",   // muted icons / text
+          500: "rgba(255,255,255,0.52)",   // secondary text
+          600: "rgba(255,255,255,0.65)",
+          700: "rgba(255,255,255,0.75)",   // labels
+          800: "rgba(255,255,255,0.87)",
+          900: "#f8f5fd",                  // primary text
         },
 
-        // Indigo brand — replaces amber, used on buttons, focus rings, active states
+        // Cyan — primary brand accent
         brand: {
-          50:  "#eef2ff",
-          100: "#e0e7ff",
-          200: "#c7d2fe",
-          300: "#a5b4fc",
-          400: "#818cf8",
-          500: "#6366f1",
-          600: "#4f46e5",
-          700: "#4338ca",
-          800: "#3730a3",
-          900: "#312e81",
+          50:  "#E7FAFD",
+          100: "#BDF2FA",
+          200: "#92E9F7",
+          300: "#a5f3fc",
+          400: "#67e8f9",
+          500: "#22d3ee",
+          600: "#06b6d4",
+          700: "#22d3ee",  // kept bright so active text stays readable
+          800: "#0891b2",
+          900: "#0e7490",
         },
 
-        // Standalone violet and cyan tokens for gradient accents
+        // Celestial accents
+        nebula:  { DEFAULT: "#ea73fb" },
+        stellar: { DEFAULT: "#97a5ff" },
+
         violet: {
           400: "#a78bfa",
           500: "#8b5cf6",
@@ -52,9 +55,9 @@ const config: Config = {
           600: "#0891b2",
         },
 
-        // Semantic directional — emerald for gains, rose for losses
-        up:   { DEFAULT: "#059669" },  // emerald-600
-        down: { DEFAULT: "#e11d48" },  // rose-600
+        // Semantic directional — lightened for dark backgrounds
+        up:   { DEFAULT: "#34d399" },  // emerald-400
+        down: { DEFAULT: "#fb7185" },  // rose-400
       },
 
       fontFamily: {
@@ -67,10 +70,10 @@ const config: Config = {
       },
 
       boxShadow: {
-        card:         "0px 0px 0px rgba(0,0,0,0.10), 0px 0px 0px rgba(0,0,0,0.06)",
-        "card-hover": "0 4px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06)",
-        dropdown:     "0 4px 16px 0 rgba(0,0,0,0.10), 0 2px 6px -1px rgba(0,0,0,0.08)",
-        topbar:       "0 2px 12px rgba(99,102,241,0.20)",
+        card:         "0 8px 40px rgba(15,10,40,0.50), inset 0 1px 0 rgba(255,255,255,0.08)",
+        "card-hover": "0 12px 60px rgba(15,10,40,0.60), inset 0 1px 0 rgba(255,255,255,0.10)",
+        dropdown:     "0 8px 40px rgba(10,8,25,0.70),  inset 0 1px 0 rgba(255,255,255,0.06)",
+        topbar:       "0 1px 0 rgba(255,255,255,0.06)",
       },
 
       keyframes: {
