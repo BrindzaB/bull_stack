@@ -40,21 +40,6 @@ const config: Config = {
           900: "#0e7490",
         },
 
-        // Celestial accents
-        nebula:  { DEFAULT: "#ea73fb" },
-        stellar: { DEFAULT: "#97a5ff" },
-
-        violet: {
-          400: "#a78bfa",
-          500: "#8b5cf6",
-          600: "#7c3aed",
-        },
-        cyan: {
-          400: "#22d3ee",
-          500: "#06b6d4",
-          600: "#0891b2",
-        },
-
         // Semantic directional — lightened for dark backgrounds
         up:   { DEFAULT: "#34d399" },  // emerald-400
         down: { DEFAULT: "#fb7185" },  // rose-400
@@ -70,10 +55,7 @@ const config: Config = {
       },
 
       boxShadow: {
-        card:         "0 8px 40px rgba(15,10,40,0.50), inset 0 1px 0 rgba(255,255,255,0.08)",
-        "card-hover": "0 12px 60px rgba(15,10,40,0.60), inset 0 1px 0 rgba(255,255,255,0.10)",
-        dropdown:     "0 8px 40px rgba(10,8,25,0.70),  inset 0 1px 0 rgba(255,255,255,0.06)",
-        topbar:       "0 1px 0 rgba(255,255,255,0.06)",
+        dropdown: "0 8px 40px rgba(10,8,25,0.70), inset 0 1px 0 rgba(255,255,255,0.06)",
       },
 
       keyframes: {

@@ -112,14 +112,6 @@ body {
     letter-spacing: 0.08em;
   }
 
-  .logo-mark {
-    @apply text-base font-bold tracking-tight select-none;
-    background: #ffffff;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
   /* Shimmer skeleton block */
   .shimmer {
     background: linear-gradient(
@@ -141,7 +133,6 @@ body {
     @apply font-mono tabular-nums;
   }
 
-  .text-up      { color: #34d399; }
-  .text-down    { color: #fb7185; }
-  .text-tertiary { color: #97a5ff; }
+  .text-up   { color: #34d399; }
+  .text-down { color: #fb7185; }
 }

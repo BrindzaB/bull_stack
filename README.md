@@ -2,7 +2,7 @@
 
 BullStack is a full-stack stock tracking dashboard where you can monitor live prices, track your holdings with real-time P&L, and stay on top of market news — all in one clean, fast interface. Built from scratch as a learning project, but engineered with the same patterns you'd find in a production app: server-side API proxying, in-memory caching, session-authenticated routes, and a custom design system.
 
-![BullStack Stock Page](./public/stock1.png)
+![BullStack Stock Page](./public/stock.png)
 
 ---
 
@@ -182,6 +182,6 @@ Add env vars to Vercel, set Google OAuth redirect URIs to production URL, run `n
 
 ## Additional Screenshots
 
-![BullStack Dashboard Preview](./public/dashboard1.png)
-![BullStack Portfolio Preview](./public/portfolio1.png)
-![BullStack News Preview](./public/news1.png)
+![BullStack Dashboard Preview](./public/dashboard.png)
+![BullStack Portfolio Preview](./public/portfolio.png)
+![BullStack News Preview](./public/news.png)
