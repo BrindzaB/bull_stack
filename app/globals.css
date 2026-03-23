@@ -114,7 +114,7 @@ body {
 
   .logo-mark {
     @apply text-base font-bold tracking-tight select-none;
-    background: linear-gradient(135deg, #22d3ee);
+    background: #ffffff;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
