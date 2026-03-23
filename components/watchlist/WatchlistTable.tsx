@@ -30,7 +30,6 @@ function WatchlistRow({ symbol, onRemove }: { symbol: string, onRemove: () => vo
             <td className="py-3.5 px-4">
                 {data ? (
                     <span className={isPositive ? "badge-up" : "badge-down"}>
-                        {isPositive ? "+" : ""}
                         {formatPercent(data.dp)}
                     </span>
                 ) : (
