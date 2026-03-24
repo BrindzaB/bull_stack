@@ -1,5 +1,6 @@
 "use client"
 
+import { createPortal } from "react-dom";
 import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { usePortfolio } from "@/hooks/usePortfolio";
@@ -119,9 +120,9 @@ export default function AddHoldingModal({ isOpen, onClose }: AddHoldingModalProp
 
   const isValid = symbol && quantity && price && date;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
       onMouseDown={onClose}
     >
       <div
@@ -193,6 +194,7 @@ export default function AddHoldingModal({ isOpen, onClose }: AddHoldingModalProp
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
