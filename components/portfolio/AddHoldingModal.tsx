@@ -58,7 +58,7 @@ function SymbolSearch({value, onChange}: SymbolSearchProps) {
             className="input-base w-full"
         />
         {open && debouncedQuery.length >= 1 && (
-            <ul className="absolute z-50 mt-1.5 w-full overflow-hidden rounded-xl backdrop-blur-xl" style={{ background: 'rgba(12,18,50,0.95)', border: '1px solid rgba(255,255,255,0.10)', boxShadow: '0 16px 48px rgba(0,0,20,0.50)' }}>
+            <ul className="absolute z-50 mt-1.5 w-full overflow-hidden rounded-xl backdrop-blur-xl" style={{ background: 'rgba(30, 30, 30, 1.0)', borderColor: 'rgba(255,255,255,0.10)', boxShadow: '0 16px 48px rgba(0,0,20,0.50)' }}>
             {isFetching && (
                 <li className="px-4 py-2.5 text-sm text-white/50">Searching...</li>
             )}

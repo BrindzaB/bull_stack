@@ -43,7 +43,7 @@ export default function StockSearchBar() {
     }
 
     return (
-        <div ref={containerRef} className="relative w-full md:w-96 rounded-xl bg-black/10 border border-white/20">
+        <div ref={containerRef} className="relative w-full md:w-96 rounded-2xl bg-white/10">
             <input
                 type="text"
                 value={input}
