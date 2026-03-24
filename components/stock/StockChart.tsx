@@ -52,7 +52,7 @@ export default function StockChart({ symbol }: { symbol: string}) {
     const resolutions: Resolution[] = ["1W", "1M", "3M", "1Y"];
 
     return (
-    <div className="card p-4 lg:p-8 h-full flex flex-col bg-black/70">
+    <div className="card p-4 lg:p-8 h-full flex flex-col bg-black/40">
 
       <div className="mb-6 flex gap-1.5 shrink-0">
         {resolutions.map((r) => (
