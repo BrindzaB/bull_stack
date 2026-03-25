@@ -2,8 +2,6 @@
 
 BullStack is a full-stack stock tracking dashboard where you can monitor live prices, track your holdings with real-time P&L, and stay on top of market news — all in one clean, fast interface. Built from scratch as a learning project, but engineered with the same patterns you'd find in a production app: server-side API proxying, in-memory caching, session-authenticated routes, and a custom design system.
 
-The UI uses a light warm minimal design language — layered warm-white surfaces (`#f0ece9` → `#F9F8F6` → `#FFFFFF`) with multi-layer box shadows for depth, Geist Sans for text, and Geist Mono for all numeric data. All design tokens are CSS custom properties defined in `:root`.
-
 ![BullStack Stock Page](./public/stock.png)
 
 ---
@@ -150,43 +148,12 @@ Responses are cached in-memory with TTL (`lib/cache.ts`). Bad or empty responses
 
 ### Historical Price Data
 
-Finnhub's `/stock/candle` endpoint is premium-tier only. Historical OHLC data is sourced from `yahoo-finance2` (free, no key required) and normalized to the `FinnhubCandles` shape so all downstream chart code is unaffected.
+Finnhub's `/stock/candle` endpoint is premium-tier only. Historical OHLC data is sourced from `yahoo-finance2` and normalized to the `FinnhubCandles` shape so all downstream chart code is unaffected.
 
 ### Database
 
-PostgreSQL on Railway via Prisma 7. Uses `@prisma/adapter-pg` driver adapter (required for Prisma 7). All money and quantity fields use `Decimal` (not `Float`) to avoid floating-point precision issues.
+PostgreSQL on Railway via Prisma 7. Uses `@prisma/adapter-pg` driver adapter (required for Prisma 7).
 
----
-
-## Current Status
-
-### Completed
-
-**Phase 1 — Project Setup**
-Next.js 14 App Router scaffolded, connected to Railway PostgreSQL, deployed to Vercel.
-
-**Phase 2 — Authentication**
-Email/password registration with Zod validation and bcryptjs hashing. Google OAuth via NextAuth v5. Server Actions for auth forms. Middleware protects all dashboard routes.
-
-**Phase 3 — Stock Data**
-Live quotes via Finnhub (60s cache). Historical candles via `yahoo-finance2`. Debounced symbol search autocomplete. Area chart with 1W / 1M / 3M / 1Y resolution switcher.
-
-**Phase 4 — Watchlist**
-Personal watchlist with live quotes and % change. Full table and dashboard widget. Optimistic mutations via TanStack Query. Clickable rows navigate to the stock detail page.
-
-**Phase 5 — Portfolio Tracking**
-Holdings table with Symbol, Shares, Avg Cost, Current Price, Value, P&L $ and P&L %. Add/remove positions via modal. Portfolio summary card (total value, total return). Dashboard widget shows top holdings. Clickable rows navigate to the stock detail page.
-
-**Phase 6 — News Feed**
-Per-stock news on the stock detail page. General market headlines on `/news`. 2-hour server-side cache. Clickable articles open in a new tab.
-
-**Phase 7 — Polish, Responsive & Deployment**
-Shimmer skeleton loaders on all data-fetching components. Error states via React Query `isError`. Mobile-responsive layout with bottom tab navigation. Stock chart adapts tick density and Y-axis position on mobile. Holdings table horizontally scrollable on mobile. Deployed to Vercel with Railway PostgreSQL, Google OAuth configured for production.
-
-**Design Overhaul**
-Migrated from a dark glassmorphism aesthetic to a light warm minimal design system. All design tokens (`--background`, `--color-light-layer-*`, `--color-text-*`, `--shadow-*`) are CSS custom properties in `:root`. Removed Tailwind `surface` and `brand` color scales in favour of direct `var()` references. Shimmer skeletons updated for light backgrounds.
-
----
 
 ## Additional Screenshots
 
