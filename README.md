@@ -1,8 +1,32 @@
-# BullStack
+<!-- README TOP -->
+<div id="readme-top"></div>
 
-BullStack is a full-stack stock tracking dashboard where you can monitor live prices, track your holdings with real-time P&L, and stay on top of market news — all in one clean, fast interface. Built from scratch as a learning project, but engineered with the same patterns you'd find in a production app: server-side API proxying, in-memory caching, session-authenticated routes, and a custom design system.
+
+
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="public/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+<h3 align="center">BullStack</h3>
+
+<p align="center">
+Full-stack stock tracking application
+<br />
+<br />
+<a href="https://bullstack-three.vercel.app/"><strong>Try out now</strong></a>
+<br />
+</p>
+</div>
+
+---
 
 ![BullStack Stock Page](./public/stock.png)
+
+BullStack is a full-stack stock tracking dashboard where you can monitor live prices, track your holdings with real-time P&L, and stay on top of market news — all in one clean, fast interface. Built from scratch as a learning project, but engineered with the same patterns you'd find in a production app: server-side API proxying, in-memory caching, session-authenticated routes, and a custom design system.
 
 ---
 
