@@ -43,7 +43,7 @@ No installation needed — just open the link, create an account (or use Google 
 [![Next.js](https://img.shields.io/badge/Next.js-14-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Railway-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://railway.app/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://supabase.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=flat-square&logo=prisma&logoColor=white)](https://www.prisma.io/)
 [![NextAuth.js](https://img.shields.io/badge/NextAuth.js-v5-7C3AED?style=flat-square&logo=auth0&logoColor=white)](https://authjs.dev/)
 [![Finnhub](https://img.shields.io/badge/Finnhub-Stock%20Data-FF6B35?style=flat-square&logo=yahoo&logoColor=white)](https://finnhub.io/)
@@ -141,7 +141,7 @@ Finnhub's `/stock/candle` endpoint is premium-tier only. Historical OHLC data is
 
 ### Database
 
-PostgreSQL on Railway via Prisma 7. Uses `@prisma/adapter-pg` driver adapter (required for Prisma 7).
+PostgreSQL on Supabase via Prisma 7. Uses `@prisma/adapter-pg` driver adapter (required for Prisma 7). Runtime queries use the Supabase transaction pooler (PgBouncer, port 6543); migrations use the direct connection (port 5432) via `DIRECT_URL` in `prisma.config.ts`.
 
 
 ## Additional Screenshots

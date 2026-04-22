@@ -47,7 +47,7 @@ It is built as a **full-stack Next.js application** — meaning the frontend (wh
 | **Next.js 14** | Full-stack React framework | Gives us routing, server components, API routes, and middleware all in one. Industry standard for React apps. |
 | **TypeScript** | Type-safe JavaScript | Catches errors before they happen. In a financial app, you don't want `"150"` where you expected `150`. |
 | **Prisma 7** | Database ORM | Lets you write TypeScript instead of raw SQL. Auto-generates types from your schema. |
-| **PostgreSQL** | Relational database | Reliable, supports `DECIMAL` precision for money values, great free hosting on Railway. |
+| **PostgreSQL** | Relational database | Reliable, supports `DECIMAL` precision for money values, great free hosting on Supabase. |
 | **NextAuth v5** | Authentication | Handles the hard parts of auth: sessions, JWT tokens, OAuth, password hashing integration. |
 | **TanStack React Query** | Client-side data fetching & caching | Manages loading/error states, caches responses, and re-fetches automatically. Avoids writing `useEffect` + `fetch` boilerplate. |
 | **Tailwind CSS** | Styling | Utility-first CSS — write styles directly in JSX instead of separate CSS files. |
